@@ -132,7 +132,7 @@ workflows:
               - aws-eks/create-cluster
         - create-deployment:
            cluster-name:  udacity-capstone-weather
-            requires:
+           requires:
               - test-cluster
         - test-deployment:
             cluster-name:  udacity-capstone-weather
