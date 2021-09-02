@@ -54,7 +54,7 @@ jobs:
             export url="http://localhost:8000"
             export response=$(curl -s $url)
             echo "This is response $response"
-            if [[ $response == *"Rolling Deployment V2"* ]]; then              
+            if [[ $response != *"Rolling Deployment V2"* ]]; then              
               docker stop app_web_1
             else              
               docker stop app_web_1
