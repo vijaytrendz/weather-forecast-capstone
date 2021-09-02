@@ -50,7 +50,6 @@ jobs:
             docker build -t vijayramachandran/my-weather:3.0 .
             docker-compose up -d
             sleep 10
-            https://github.com/weaveworks/eksctl/releases/download/0.14.0/eksctl_Linux_amd64.tar.gz | tar xz -C /tmp; mv /tmp/eksctl /usr/local/bin
             docker ps
             export url="http://localhost:8000"
             export response=$(curl -s $url)
@@ -155,6 +154,3 @@ workflows:
      #       cluster-name: mycapstone-myweather1234567
           #  requires:
           #    - aws-eks/update-container-image
-          
-          
-          ###Check
