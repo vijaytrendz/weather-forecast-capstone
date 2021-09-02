@@ -76,7 +76,12 @@ jobs:
           command: |
             kubectl get services
           name: Test cluster
-            
+    
+  eks_installation:
+      - run:
+          command: |
+            mkdir -p eksctl_download; curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
+            chmod +x eksctl_download/eksctl
           
   create-deployment:
     executor: aws-eks/python3
@@ -125,6 +130,7 @@ workflows:
             cluster-name: udacity-capstone-weather
             requires:
               - config-image
+              - eks_installation
         - test-cluster:
             cluster-name: udacity-capstone-weather
             requires:
@@ -150,5 +156,3 @@ workflows:
      #       cluster-name: mycapstone-myweather1234567
           #  requires:
           #    - aws-eks/update-container-image
-          
-          #restart the job1
