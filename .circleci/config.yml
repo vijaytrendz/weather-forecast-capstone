@@ -80,7 +80,8 @@ jobs:
   eks_installation:
       - run:
           command: |
-            mkdir -p eksctl_download; curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
+            mkdir -p eksctl_download
+            curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
             chmod +x eksctl_download/eksctl
           
   create-deployment:
@@ -126,11 +127,11 @@ workflows:
       jobs:
         - lint
         - config-image
+        - eks_installation
         - aws-eks/create-cluster:
             cluster-name: udacity-capstone-weather
             requires:
               - config-image
-              - eks_installation
         - test-cluster:
             cluster-name: udacity-capstone-weather
             requires:
