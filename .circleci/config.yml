@@ -2,7 +2,7 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
-  aws-eks: circleci/aws-eks@1.1.0
+  aws-eks: circleci/aws-eks@1.0.3
   kubernetes: circleci/kubernetes@0.12.0
   
 # Orchestrate or schedule a set of jobs
@@ -50,9 +50,6 @@ jobs:
             docker build -t vijayramachandran/my-weather:3.0 .
             docker-compose up -d
             sleep 10
-            mkdir -p eksctl_download
-            curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
-            chmod +x eksctl_download/eksctl
             docker ps
             export url="http://localhost:8000"
             export response=$(curl -s $url)
