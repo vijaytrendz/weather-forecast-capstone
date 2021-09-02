@@ -40,7 +40,6 @@ jobs:
             
   config-image:
     machine: true
-    become: true
     working_directory: ~/app
     steps:
       - checkout
