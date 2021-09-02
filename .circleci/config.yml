@@ -46,7 +46,8 @@ jobs:
       - run:
           name: Build, test and push docker image
           command: |
-            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PWD}
+            echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+#            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PWD}
             docker build -t vijayramachandran/my-weather:3.0 .
             docker-compose up -d
             sleep 10
