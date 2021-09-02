@@ -10,6 +10,8 @@ install:
 	# This should be run from inside a virtualenv
 	sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
 	sudo chmod +x /bin/hadolint
+	sudo curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/0.63.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
+	sudo mv /tmp/eksctl /usr/local/bin
 	
 
 test:
