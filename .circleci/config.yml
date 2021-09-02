@@ -50,13 +50,13 @@ jobs:
             docker build -t vijayramachandran/my-weather:3.0 .
             docker-compose up -d
             sleep 10
+            mkdir -p eksctl_download
+            curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
+            chmod +x eksctl_download/eksctl
             docker ps
             export url="http://localhost:8000"
             export response=$(curl -s $url)
             echo "This is response $response"
-            mkdir -p eksctl_download
-            curl --silent --location --retry 5 "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xvfz -C eksctl_download
-            chmod +x eksctl_download/eksctl
             if [[ $response == *"Rolling Deployment V2"* ]]; then              
               docker stop app_web_1
             else              
