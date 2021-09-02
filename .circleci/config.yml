@@ -60,7 +60,7 @@ jobs:
               docker stop app_web_1
               exit 1
             fi
-            docker push ankesh9323/my-weather:3.0
+            docker push vijayramachandran/my-weather:3.0
             
   test-cluster:
     executor: aws-eks/python3

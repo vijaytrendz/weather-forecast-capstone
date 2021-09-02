@@ -6,7 +6,7 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
-dockerpath=ankesh9323/myweather
+dockerpath=vijayramachandran/myweather
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
