@@ -98,7 +98,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
-         # get-rollout-status: true
+          get-rollout-status: true
           resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
           
@@ -137,6 +137,7 @@ workflows:
               - aws-eks/create-cluster
         - create-deployment:
            cluster-name:  udacity-capstone-weather4
+           no_output_timeout: 30m
            requires:
               - test-cluster
         - test-deployment:
