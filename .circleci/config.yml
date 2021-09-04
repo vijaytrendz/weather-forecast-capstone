@@ -85,6 +85,7 @@ jobs:
           
   create-deployment:
     executor: aws-eks/python3
+    no_output_timeout: 30m
     parameters:
       cluster-name:
         description: |
@@ -137,7 +138,6 @@ workflows:
               - aws-eks/create-cluster
         - create-deployment:
            cluster-name:  udacity-capstone-weather4
-           no_output_timeout: 30m
            requires:
               - test-cluster
         - test-deployment:
