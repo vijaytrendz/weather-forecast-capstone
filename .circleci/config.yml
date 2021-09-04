@@ -2,7 +2,7 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
-  aws-eks: circleci/aws-eks@1.1.0
+  aws-eks: circleci/aws-eks@1.1.0s
   kubernetes: circleci/kubernetes@0.12.0
   
 # Orchestrate or schedule a set of jobs
@@ -19,9 +19,7 @@ jobs:
           name: install dependencies
           command: |            
             make install
-            sudo curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/0.63.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
-            sudo mv /tmp/eksctl /usr/local/bin
-            
+
       - run:
           name: run lint
           command: |
