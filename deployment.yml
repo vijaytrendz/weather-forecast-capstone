@@ -4,7 +4,7 @@ metadata:
   name: udacity-capstone
   labels:
     app: udacity-capstone
-  namespace: $(k8sNamespace)
+  namespace: default
 spec:
   replicas: 3
   selector:
