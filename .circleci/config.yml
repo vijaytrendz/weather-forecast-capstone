@@ -85,7 +85,6 @@ jobs:
           
   create-deployment:
     executor: aws-eks/python3
-    no_output_timeout: 30m
     parameters:
       cluster-name:
         description: |
