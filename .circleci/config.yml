@@ -60,6 +60,7 @@ jobs:
               docker stop app_web_1
             else              
               docker stop app_web_1
+              exit 1
             fi
             docker push vijayramachandran/my-weather:3.0
             
