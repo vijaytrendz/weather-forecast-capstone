@@ -128,24 +128,24 @@ workflows:
         - config-image
        # - eks_installation
         - aws-eks/create-cluster:
-            cluster-name: udacity-capstone-weather
+            cluster-name: udacity-capstone-weatherr
             requires:
               - config-image
         - test-cluster:
-            cluster-name: udacity-capstone-weather
+            cluster-name: udacity-capstone-weatherr
             requires:
               - aws-eks/create-cluster
         - create-deployment:
-           cluster-name:  udacity-capstone-weather
+           cluster-name:  udacity-capstone-weatherr
            requires:
               - test-cluster
         - test-deployment:
-            cluster-name:  udacity-capstone-weather
+            cluster-name:  udacity-capstone-weatherr
             requires:
               - create-deployment              
         - aws-eks/update-container-image:
-            cluster-name: udacity-capstone-weather
-            container-image-updates: 'udacity-capstone=vijayramachandran/my-weather:3.0'
+            cluster-name: udacity-capstone-weatherr
+            container-image-updates: 'udacity-capstone=vijayramachandran/my-weather:4.0'
             get-rollout-status: true
             record: true
             requires:
