@@ -98,7 +98,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
-          get-rollout-status: true
+          #get-rollout-status: true
           resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
           
@@ -128,25 +128,25 @@ workflows:
         - config-image
        # - eks_installation
         - aws-eks/create-cluster:
-            cluster-name: udacity-capstone-weatherr
+            cluster-name: udacity-capstone-weather1
             requires:
               - config-image
         - test-cluster:
-            cluster-name: udacity-capstone-weatherr
+            cluster-name: udacity-capstone-weather1
             requires:
               - aws-eks/create-cluster
         - create-deployment:
-           cluster-name:  udacity-capstone-weatherr
+           cluster-name:  udacity-capstone-weather1
            requires:
               - test-cluster
         - test-deployment:
-            cluster-name:  udacity-capstone-weatherr
+            cluster-name:  udacity-capstone-weather1
             requires:
               - create-deployment              
         - aws-eks/update-container-image:
-            cluster-name: udacity-capstone-weatherr
+            cluster-name: udacity-capstone-weather1
             container-image-updates: 'udacity-capstone=vijayramachandran/my-weather:4.0'
-            get-rollout-status: true
+            #get-rollout-status: true
             record: true
             requires:
              - test-deployment
