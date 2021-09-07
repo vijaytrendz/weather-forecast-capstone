@@ -152,9 +152,9 @@ workflows:
              - test-deployment
             resource-name:  deployment/udacity-capstone
         
-     #    - aws-eks/delete-cluster:
-     #       cluster-name: mycapstone-myweather1234567
-          #  requires:
-          #    - aws-eks/update-container-image
+        - aws-eks/delete-cluster:
+            cluster-name: mycapstone-myweather1234567
+            requires:
+             - aws-eks/update-container-image
           
-          ##Test4
+          ##Test6
